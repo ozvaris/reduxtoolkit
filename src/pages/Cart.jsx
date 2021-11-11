@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
 import { useHistory } from "react-router";
 
-const KEY = process.env.REACT_APP_STRIPE;
 
 //#region css
 const Container = styled.div``;
@@ -41,14 +40,14 @@ const TopButton = styled.button`
   color: ${(props) => props.type === "filled" && "white"};
 `;
 
-const TopTexts = styled.div`
-  ${mobile({ display: "none" })}
-`;
-const TopText = styled.span`
-  text-decoration: underline;
-  cursor: pointer;
-  margin: 0px 10px;
-`;
+// const TopTexts = styled.div`
+//   ${mobile({ display: "none" })}
+// `;
+// const TopText = styled.span`
+//   text-decoration: underline;
+//   cursor: pointer;
+//   margin: 0px 10px;
+// `;
 
 const Bottom = styled.div`
   display: flex;
@@ -162,7 +161,7 @@ const Button = styled.button`
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  const token = useSelector((state) => state.user.currentUser.accessToken);
+  const token = useSelector((state) => state.user.token);
 
   const [stripeToken, setStripeToken] = useState(null);
   const history = useHistory();
@@ -194,10 +193,7 @@ const Cart = () => {
     makeRequest();
   };
 
-  const onToken = (token) => {
-    setStripeToken(token);
-  };
-
+ 
   useEffect(() => {
     const makeRequest = async () => {
       try {
@@ -218,7 +214,7 @@ const Cart = () => {
       } catch {}
     };
     stripeToken && makeRequest();
-  }, [stripeToken, cart.total, history, token]);
+  }, [stripeToken,cart, cart.total, history, token]);
 
   return (
     <Container>

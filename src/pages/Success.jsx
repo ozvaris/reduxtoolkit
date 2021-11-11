@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useLocation } from "react-router";
+//import { useLocation } from "react-router";
 import { publicRequest } from "../requestMethods";
 import { useHistory } from "react-router"; 
 import { clearCart } from "../actions/cart"; 
 
 const Success = () => {
-  const location = useLocation();
+  //const location = useLocation();
   //in Cart.jsx I sent data and cart. Please check that page for the changes.(in video it's only data)
   //const data = location.state.stripeData;
   //const cart = location.state.cart;
 
   const currentUser = useSelector((state) => state.user.currentUser);
-  const token = currentUser.accessToken;
+  const token = useSelector((state) => state.user.token);
   const cart = useSelector((state) => state.cart);
   
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const Success = () => {
       } catch (err) { alert(err.message) }
     };    
     createOrder();
-  }, [cart, currentUser, token]);
+  }, [cart, currentUser, token, dispatch]);
 
   return (
     <div

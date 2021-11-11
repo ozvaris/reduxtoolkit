@@ -15,12 +15,12 @@ import Success from "./pages/Success";
 import { useSelector } from "react-redux";
 
 const App = () => {
-  const user = useSelector((state) => state.user.currentUser);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home />
+          {isAuthenticated ? <Home /> : <Redirect to="/Login" />}
         </Route>
         <Route path="/products/:category">
           <ProductList />
@@ -34,10 +34,14 @@ const App = () => {
         <Route path="/success">
           <Success />
         </Route>
-        <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
-        <Route path="/logout"> <Logout /></Route>
+        <Route path="/login">
+            {isAuthenticated ? <Redirect to="/" /> : <Login />}
+        </Route>
+        <Route exact path="/logout">
+          <Logout />
+        </Route>
         <Route path="/register">
-          {user ? <Redirect to="/" /> : <Register />}
+          {isAuthenticated ? <Redirect to="/" /> : <Register />}
         </Route>
       </Switch>
     </Router>

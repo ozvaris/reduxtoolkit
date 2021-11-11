@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { login } from "../redux/apiCalls";
+import { login } from "../redux/userAPICalls";
 import { clearUserErrors } from "../actions/user";
 
 import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
+import backgroundImage from "../sky.jpg"
 
 //#region style
 const Container = styled.div`
@@ -14,7 +15,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+    url("${backgroundImage}")
       center;
   background-size: cover;
   display: flex;
@@ -73,6 +74,7 @@ const Error = styled.span`
 //#endregion
 
 const Login = () => {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -84,7 +86,7 @@ const Login = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    login(dispatch, { username, password });
+    login(dispatch, { email: username, password });
   };
   return (
     <Container>
