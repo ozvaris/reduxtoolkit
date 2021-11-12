@@ -1,5 +1,5 @@
 import { Badge } from "@material-ui/core";
-import { ShoppingCartOutlined } from "@material-ui/icons";
+import { PersonOutline, ShoppingCartOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
@@ -118,6 +118,11 @@ const Navbar = () => {
               <MenuItem>ÇIKIŞ</MenuItem>
             </Link>
           )}
+          <Link to="/cart">
+            <MenuItem>
+              <PersonOutline />
+            </MenuItem>
+          </Link>
           <Link to="/cart">
             <MenuItem>
               <Badge badgeContent={quantity} color="primary">
