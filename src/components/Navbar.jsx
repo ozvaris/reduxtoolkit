@@ -1,5 +1,5 @@
-import { Badge } from "@material-ui/core";
-import { PersonOutline, ShoppingCartOutlined } from "@material-ui/icons";
+import Badge  from "@mui/material/Badge";
+import { PersonOutline, ShoppingCartOutlined } from "@mui/icons-material";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
