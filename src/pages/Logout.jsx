@@ -1,4 +1,4 @@
-import { logout } from "../redux/userAPICalls";
+import { logout } from "../store/actions/user";
 import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 

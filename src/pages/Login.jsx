@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { login } from "../redux/userAPICalls";
-import { clearUserErrors } from "../actions/user";
+import { login, clearUserErrors } from "../store/actions/user";
 
 import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";

@@ -3,8 +3,8 @@ import {
   productStart,
   productSuccess,
   logoutStart,
-} from "./userRedux";
-import { publicRequest } from "../requestMethods";
+} from "../redux/userRedux";
+import { publicRequest } from "../../requestMethods";
 
 export const product = async (dispatch, token, cat) => {
   dispatch(productStart());

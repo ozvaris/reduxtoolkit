@@ -3,8 +3,13 @@ import {
   loginStart,
   loginSuccess,
   logoutStart,
-} from "./userRedux";
-import { publicRequest } from "../requestMethods";
+  userErrorClear,
+} from "../redux/userRedux";
+import { publicRequest } from "../../requestMethods";
+
+export const clearUserErrors = async (dispatch) => {
+  dispatch(userErrorClear());
+};
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
@@ -19,3 +24,6 @@ export const login = async (dispatch, user) => {
 export const logout = async (dispatch) => {
   dispatch(logoutStart());
 };
+
+
+

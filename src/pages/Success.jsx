@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 //import { useLocation } from "react-router";
 import { publicRequest } from "../requestMethods";
 import { useHistory } from "react-router"; 
-import { clearCart } from "../actions/cart"; 
+import { clearCart } from "../store/actions/cart"; 
 
 const Success = () => {
   //const location = useLocation();
